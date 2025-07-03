@@ -1,0 +1,111 @@
+tags:
+  - name: Tasks
+    description: Endpoints para gestión de tareas del usuario
+
+paths:
+  /tasks:
+    get:
+      tags: [Tasks]
+      summary: Obtener todas las tareas del usuario autenticado
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Número de página (por defecto 1)
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+          description: Cantidad de tareas por página (por defecto 10)
+      responses:
+        200:
+          description: Lista paginada de tareas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                  limit:
+                    type: integer
+                  total:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  tasks:
+                    type: array
+                    items:
+                      type: object
+
+
+    post:
+      tags: [Tasks]
+      summary: Crear una nueva tarea
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+      responses:
+        201:
+          description: Tarea creada exitosamente
+
+  /tasks/{id}:
+    put:
+      tags: [Tasks]
+      summary: Actualizar una tarea
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID de la tarea
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                completed:
+                  type: boolean
+      responses:
+        200:
+          description: Tarea actualizada
+
+    delete:
+      tags: [Tasks]
+      summary: Eliminar una tarea
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID de la tarea
+      responses:
+        204:
+          description: Tarea eliminada exitosamente

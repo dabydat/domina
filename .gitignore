@@ -1,0 +1,63 @@
+# Global
+node_modules/
+dist/
+build/
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs*
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor configs
+.vscode/
+.idea/
+.DS_Store
+
+# OS
+Thumbs.db
+
+# frontend (Vite)
+frontend/.vite/
+frontend/node_modules/
+frontend/dist/
+
+
+# gateway
+gateway/node_modules/
+gateway/dist/
+gateway/.env
+
+# auth-service
+auth/node_modules/
+auth/dist/
+auth/.env
+
+# task-service
+tasks/node_modules/
+tasks/dist/
+tasks/.env
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json*
+.idea*
+.DS_Store*
+*.suo*
+*.ntvs*
+*.njsproj*
+*.sln*
+*.sw?*
